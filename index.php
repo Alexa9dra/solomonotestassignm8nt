@@ -1,6 +1,6 @@
 <?php 
-  if(isset($_GET['download']) and $_GET['download']=='true') {
-    $filename = 'index.php'; 
+  if(isset($_GET["download"]) and $_GET["download"]=="true") {
+    $filename = "index.php"; 
     ob_end_clean();
     header("Content-Type: application/octet-stream; "); 
     header("Content-Transfer-Encoding: binary"); 
@@ -51,6 +51,7 @@
 				position: absolute;
 				padding: 23px 15px 23px 21px;
 				width: 360px;
+				min-height: 235px;
 				background-color: #fff;
 				top: 100%;
 				font-size: 14px;
@@ -197,6 +198,10 @@
 				box-shadow: 0 0 20px rgba(43,45,56,.06);
 			}
 
+			.hide {
+				display: none;
+			}
+
 			@media screen and (max-width: 770px) {
 				.navbar-fixed-top .navbar-collapse {
 					max-height: none;
@@ -232,27 +237,27 @@
 			];
 
 			$categories = [
-				'Мобільні телефони і гаджети',
-				'Ноутбуки і Аксесуари',
-				'Комп`ютери',
-				'Розумні годинники'
+				"Мобільні телефони і гаджети",
+				"Ноутбуки і Аксесуари",
+				"Комп`ютери",
+				"Розумні годинники"
 			];
 
 			$sub_categories = [
-				'Ноутбуки',
-				'Планшети',
-				'Аксесуари до ноутбуків і ПК',
-				'Комплектуючі',
-				'Комп`ютери',
-				'Книги',
-				'Відеокарти'
+				"Ноутбуки",
+				"Планшети",
+				"Аксесуари до ноутбуків і ПК",
+				"Комплектуючі",
+				"Комп`ютери",
+				"Книги",
+				"Відеокарти"
 			];
 		?>
 
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#"><?php echo '<b>'.$info['brand'].'</b>'; ?></a>
+					<a class="navbar-brand" href="#"><?php echo "<b>".$info["brand"]."</b>"; ?></a>
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -268,15 +273,20 @@
 							<!-- Login form -->
 							<form class="login-form">
 								<div class="login-form__links">									
-									<a href="#" class="login-form__link-active">First Name</a>
-									<a href="#">Settings</a>
+									<a href="#" class="login-form__link login-form__link-active">First Name</a>
+									<a href="#" class="login-form__link">Settings</a>
 								</div>
-								<label for="fname">Label</label>
-								<input type="text" id="fname" name="fname" value="First Name"><br>
-								<label for="plholder">Placeholder</label>
-								<input type="text" id="plholder" name="plholder" value=""><br>
-								<label for="req">Required</label>
-								<input type="checkbox" id="req" name="req">
+								<div class="login-form__login">
+									<label for="fname">Label</label>
+									<input type="text" id="fname" name="fname" value="First Name"><br>
+									<label for="plholder">Placeholder</label>
+									<input type="text" id="plholder" name="plholder" value=""><br>
+									<label for="req">Required</label>
+									<input type="checkbox" id="req" name="req">
+								</div>
+								<div class="login-form__settings hide">
+									<p>Something will be here :3</p>
+								</div>
 							</form>
 							<!-- /.login-form -->
 						</li>
@@ -287,23 +297,23 @@
 							<ul class="dropdown-menu">
 								<?php 
 									foreach ($categories as $category) {
-										if($category == 'Комп`ютери') {
+										if($category == "Комп`ютери") {
 											// If it`s submenu category
-											echo '<li role="separator" class="divider"></li>
-												<li class="dropdown subcategory-dropdown">
-													<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-														aria-haspopup="true" aria-expanded="true">'.$category.'<span 
-														class="caret caret-right"></span></a>
-													<ul class="dropdown-menu subcategory-menu">';
+											echo "<li role='separator' class='divider'></li>
+												<li class='dropdown subcategory-dropdown'>
+													<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' 
+														aria-haspopup='true' aria-expanded='true'>".$category."<span 
+														class='caret caret-right'></span></a>
+													<ul class='dropdown-menu subcategory-menu'>";
 														foreach ($sub_categories as $sub_category) {
-															echo '<li class="subcategory-menu-item">
-																<a href="#">'.$sub_category.'</a></li>';
+															echo "<li class='subcategory-menu-item'>
+																<a href='#'>".$sub_category."</a></li>";
 														};
-													echo '</ul>												
+													echo "</ul>												
 												</li>
-											<li role="separator" class="divider"></li>';
+											<li role='separator' class='divider'></li>";
 										} else {
-											echo '<li><a href="#">'.$category.'</a></li>';
+											echo "<li><a href='#'>".$category."</a></li>";
 										}
 									} 
 								?>
@@ -320,8 +330,8 @@
 		</nav>
 
 		<div class="jumbotron text-center">
-			<h1><?php echo '<b>'.$info['title'].'</b>'; ?></h1>
-			<p><?php echo $info['description']; ?></p>
+			<h1><?php echo "<b>".$info["title"]."</b>"; ?></h1>
+			<p><?php echo $info["description"]; ?></p>
 		</div>
 
 
@@ -334,7 +344,7 @@
 								<ul>
 									<?php
 										foreach($categories as $category) {
-											echo '<li>'.$category.'</li>';
+											echo "<li>".$category."</li>";
 										}
 									?>
 								</ul>
@@ -368,6 +378,29 @@
 				</div>
 			</div>
 		</div>
+
+		<script>
+			function clearClazz (arr, clazz) {
+				arr.forEach(e => e.classList.remove(clazz));
+			}
+
+			const formLinks = document.querySelectorAll(".login-form__link");
+			
+			formLinks.forEach(link => link.addEventListener("click", (e) => {
+				const link = e.target.text;
+				
+				clearClazz(formLinks, "login-form__link-active");
+				e.target.classList.add("login-form__link-active");
+
+				if(link === "First Name") {
+					document.querySelector(".login-form__login").classList.remove("hide");
+					document.querySelector(".login-form__settings").classList.add("hide");
+				} else if (link === "Settings") {
+					document.querySelector(".login-form__login").classList.add("hide");
+					document.querySelector(".login-form__settings").classList.remove("hide");
+				}
+			}));
+		</script> 
 	</body>
 </html>
 <?php } ?>
