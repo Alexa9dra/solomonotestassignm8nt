@@ -55,7 +55,7 @@
 				background-color: #fff;
 				top: 100%;
 				font-size: 14px;
-				border: 1px solid lightgray;
+				border: 1px solid #e4e6f2;
 				border-radius: 5px;
 				box-shadow: 0 0 20px rgba(43,45,56,.06);
 			}
@@ -72,17 +72,23 @@
 			.login-form__links>a:focus {
 				text-decoration: none;
 			}
+			
+			.login-form__link {
+				color: #2f92e0;
+			}
 
 			.login-form__link-active {
 				font-weight: 700;
 				padding-bottom: 3px;
-				border-bottom: 1px dashed blue;
+				border-bottom: 1px dashed #2c92e3;
+				color: #2c92e3;
 			}
 
 			.login-form label {
 				width: 100px;
 				font-weight: 300;
 				letter-spacing: 0.5px;
+				color: #49545f;
 			}
 
 			.login-form label:last-of-type {
@@ -95,10 +101,10 @@
 				padding-top: 3px;
 				width: 208px;
 				height: 40px;
-				border: 1px solid lightgray;
+				border: 1px solid #e0e3e8;
 				border-radius: 10px;
 				font-weight: 700;
-				color: gray;
+				color: #485460;
 				letter-spacing: 0.7px;
 			}
 
@@ -119,7 +125,7 @@
 				display: block;
 				width: 18px;
 				height: 18px;
-				border: 1px solid lightgray;
+				border: 1px solid #e0e3e8;
 				border-radius: 4px;
 			}
 
